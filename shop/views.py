@@ -3,10 +3,12 @@ from .models import *
 from .serializers import *
 from rest_framework import permissions, response
 from django.shortcuts import HttpResponse
+from .filters import ProductFilters
 
 class ListProducts(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    filterset_class = ProductFilters
 
 class CreateProducts(generics.CreateAPIView):
     queryset = Product.objects.all()
